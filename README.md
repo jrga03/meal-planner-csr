@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e84815dc-9ee2-4010-b3c7-c26d6bbd6172/deploy-status)](https://app.netlify.com/sites/meal-plan-3771/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
