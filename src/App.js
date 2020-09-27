@@ -1,12 +1,38 @@
-import React from 'react';
-import './App.css';
+import React, { Suspense } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import App from 'containers/App'
+import muiTheme from 'theme'
 
-function App() {
+const theme = createMuiTheme(muiTheme)
+
+const Loading = (
+  <div
+    style={{
+      height: '100vh',
+      fontSize: '2rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}
+  >
+    Loading...
+  </div>
+);
+
+/**
+ * Root
+ */
+function Root() {
   return (
-    <div className="App">
-      <h1 className="wip">Work in progess...</h1>
-    </div>
+    <Suspense fallback={ Loading }>
+      <BrowserRouter>
+        <ThemeProvider theme={ theme }>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
+    </Suspense>
   );
 }
 
-export default App;
+export default Root;
