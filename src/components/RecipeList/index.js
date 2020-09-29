@@ -39,9 +39,9 @@ function RecipeList({ recipes }) {
   }
 
   const listHeight = windowSize.height - headerHeight;
-  const listWidth = Math.min(windowSize.width, 600) - (RECIPE_CARD_GUTTER_SIZE * 2);
-  const computedItemSize = listWidth * 0.2;
-  const itemSize = Math.min(Math.max(computedItemSize, 75), 120); // Clamp itemSize
+  const itemWidth = Math.min(windowSize.width, 600) - (RECIPE_CARD_GUTTER_SIZE * 2);
+  const computedItemHeight = itemWidth * 0.2;
+  const itemHeight = Math.min(Math.max(computedItemHeight, 75), 120); // Clamp itemSize
 
   return recipes.length === 0 ? (
     <LoaderWrapper>
@@ -53,9 +53,9 @@ function RecipeList({ recipes }) {
       <Fade in>
         <List
           height={ listHeight }
-          width={ listWidth }
+          width={ windowSize.width }
           itemCount={ recipes.length }
-          itemSize={ itemSize }
+          itemSize={ itemHeight }
           itemData={ recipes }
           itemKey={ getKey }
           innerElementType={ innerElementType }
@@ -68,7 +68,9 @@ function RecipeList({ recipes }) {
                 style={{
                   ...style,
                   top: style.top + RECIPE_CARD_GUTTER_SIZE,
-                  height: style.height - RECIPE_CARD_GUTTER_SIZE
+                  height: style.height - RECIPE_CARD_GUTTER_SIZE,
+                  left: style.left + ( windowSize.width - itemWidth ) / 2,
+                  width: itemWidth
                 }}
               />
             );
